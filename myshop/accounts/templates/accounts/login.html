@@ -1,0 +1,72 @@
+{% extends 'shop/base.html'%}
+{% include 'shop/navbar.html '%}
+
+{% block content %}
+<style media="screen">
+.row {
+background: white url("img/cherry.jpg") no-repeat;
+}
+</style>
+<div class="container"  >
+  <div class="row">
+
+
+  <div class="col-sm-3">
+
+  </div>
+  <div class="col-sm-6">
+
+
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <center><h2>Login</h2></center>
+  </div>
+  <div class="panel-body">
+
+
+
+<form class="" action="{% url 'accounts:login' %}" method="post">
+{% csrf_token %}
+  <!--{{ form.as_p }}-->
+
+  {% for error in form.non_field_errors %}
+  <div class="form-group has-errors text-danger small">
+    {{error}}
+  </div>
+  {%endfor%}
+{% for field in form %}
+    <div class="form-group has-errors text-danger small">
+    {{field.errors}}
+    </div>
+    <div class="form-group has-errors text-danger small">
+
+    </div>
+    <div class="form-group">
+        {{field.label}}
+    </div>
+    <div class="form-group">
+    {{field}}
+    </div>
+  {% endfor %}
+
+    {% if request.GET.next %}
+      <input type="hidden" name="next"value="{{request.GET.next }}">
+    {% endif %}
+  </div>
+  <div class="panel-footer">
+
+  <center>  <button class="btn btn-primary"type="submit" name="loginbtn">LOGIN</button></center>
+  <center><a href="#">Forgot Your Password?</a></center>
+  <br>
+  <center><p > Not Yet Registered?click<a href="{% url 'accounts:signUp' %}"> here </a>to sign up</p></center>
+
+
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

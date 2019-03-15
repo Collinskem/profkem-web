@@ -1,0 +1,57 @@
+
+{% load static %}
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="margin-bottom: 0px; <!--background-color: #5AC8FA;-->">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="container">
+      <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="{% url 'shop:product_list' %}" style="color: #ffffff">Seeds And Fertilizers online Shop</a>
+  </div>
+  <div class="nav navbar-nav">
+    <li class=""><a href="{% url "shop:index" %}">Home</a></li>
+    <li><a href="{% url "shop:product_list" %}">Products</a></li>
+    <li><a href="{% url "shop:about" %}">About us</a></li>
+    <li><a href="{% url "shop:contact" %}">contact us</a></li>
+
+
+  </div>
+
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+    <ul class="nav navbar-nav navbar-right">
+
+
+      <li class="dropdown">
+
+          {% if request.user.is_authenticated %}
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: #ffffff">{{ request.user.username }}<b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <form class="" action="{% url "accounts:logout" %}" method="POST">
+            {%csrf_token%}
+
+            <button type="submit" class="btn btn-danger btn-sm">
+  <span class="glyphicon glyphicon-off" aria-hidden="true"></span> LOGOUT
+</button>
+          </form>
+
+
+
+            {% else %}
+          <li class="divider"></li>
+          <li ><a href="{% url "accounts:login" %}">LOGIN <span class="glyphicon glyphicon-log-in"aria-hidden="true"></span></a> </li>
+            <li ><a href="{% url "accounts:signUp" %}">SIGN-UP <span class="glyphicon glyphicon-plus-sign"aria-hidden="true"></span></a> </li>
+
+        </ul>
+         {% endif %}
+      </li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+  </div>
+</nav>
