@@ -7,7 +7,7 @@ django-paypal==0.5.0
 gunicorn==19.9.0
 idna==2.8
 Pillow==5.4.1
-pipenv==2018.11.26
+pipenv==2022.1.8
 psycopg2==2.7.7
 pytz==2018.9
 requests==2.21.0
